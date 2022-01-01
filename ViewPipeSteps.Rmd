@@ -1,0 +1,52 @@
+---
+title: "<center>**Using `ViewPipeSteps` in R**</center>"
+author: "<center>Wyclife Agumba Oluoch (wyclifeoluoch@gmail.com) </center>"
+date: "<center>`r Sys.time()`</center>"
+bibliography: 
+  - bib/packages.bib
+nocite: '@*'
+output: 
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r libs, echo=FALSE, warning=FALSE, message=FALSE, include=FALSE}
+packages <- c("base",
+              'knitr',
+              'rmarkdown',
+              'ViewPipeSteps',
+              'dplyr')
+installed_packages <- packages %in% rownames(installed.packages())
+if(any(installed_packages == FALSE)){
+  install.packages(packages[!installed_packages])
+}
+lapply(packages, library, character.only = TRUE) |> invisible()
+```
+
+```{r write_bib, echo=FALSE, warning=FALSE, message=FALSE, include=FALSE}
+knitr::write_bib(c(
+  .packages(), packages
+), 'bib/packages.bib')
+```
+
+# Introduction
+
+Here I demonstrate the beauty of using `ViewPipeSteps` version `r packageVersion('ViewPipeSteps')` package to reveal what goes on at every step of piping in R. I think this is really important in trouble shooting/debugging and explaining what goes on in the piping process.
+
+```{r ViewPipeSteps}
+head(mtcars) %P>% 
+  select(cyl, mpg, qsec) %P>% 
+  filter(cyl == 6) %P>% 
+  mutate(var_x = mpg / qsec) %P>%
+  arrange(var_x)
+```
+
+
+# References
