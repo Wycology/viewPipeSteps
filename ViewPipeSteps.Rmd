@@ -41,11 +41,12 @@ knitr::write_bib(c(
 Here I demonstrate the beauty of using `ViewPipeSteps` version `r packageVersion('ViewPipeSteps')` package to reveal what goes on at every step of piping in R. I think this is really important in trouble shooting/debugging and explaining what goes on in the piping process.
 
 ```{r ViewPipeSteps}
-head(mtcars) %P>% 
-  select(cyl, mpg, qsec) %P>% 
-  filter(cyl == 6) %P>% 
-  mutate(var_x = mpg / qsec) %P>%
-  arrange(var_x)
+head(mtcars) %>% 
+  select(cyl, mpg, qsec) %>% 
+  filter(cyl == 6) %>% 
+  mutate(var_x = mpg / qsec) %>%
+  arrange(var_x) %>% 
+  print_pipe_steps()
 ```
 
 
