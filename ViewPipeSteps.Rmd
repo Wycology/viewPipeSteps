@@ -38,7 +38,7 @@ knitr::write_bib(c(
 
 # Introduction
 
-Here I demonstrate the bea of use `ViewPipeSteps` version `r packageVersion('ViewPipeSteps')` package to reveal what goes on at every step of piping in R. I think this is really important in trouble shooting/debugging and explaining what goes on in the piping process.
+Here I demonstrate the of use `ViewPipeSteps` version `r packageVersion('ViewPipeSteps')` package to reveal what goes on at every step of piping in R. I think this is really important in trouble shooting/debugging and explaining what goes on in the piping process.
 
 ```{r ViewPipeSteps}
 head(mtcars) %>% 
